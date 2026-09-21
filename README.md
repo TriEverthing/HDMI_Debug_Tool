@@ -6,6 +6,32 @@
 
 &emsp;&emsp;工具支持公板/TCL/长虹/小米/海尔的串口定义，通过Button切换定义。板载电平转换芯片，可以灵活配置输出电平电压。兼容UART和I2C，可以适用Mstar官方调试工具。
 
+# 按键和指示灯
+
+## 按键
+
+&emsp;&emsp;小板上只有一个按键，Boot和功能切换均需要通过这个按键实现。按下按键上电，小板会进入BootLoader。PC会显示一个U盘设备，将准备好的UF2固件直接拷贝到虚拟U盘，即可实现固件更新。
+
+![UF2_Bootlaoder](./Images/UF2_MSC.png)
+
+&emsp;&emsp;在用户程序，按键用于进行功能切换，功能定义见状态指示灯章节。
+
+## 运行指示灯
+
+&emsp;&emsp;丝印RUN对应的LED用于指示小板的运行状态。正常运行时RUN灯闪烁。LED不闪烁，说明小板异常需要断电重启。
+
+## 状态指示灯
+
+&emsp;&emsp;状态指示灯一共有两颗，丝印分别为SWP和CVT，用于指示小板的串口定义模式。
+
+|  SWP灯  |  CVT等  |  功能定义         |
+|:-------:|:-------:|:----------------:|
+|   灭    |   灭    |  公板/TCL         |
+|   亮    |   灭    |  长虹             |
+|   灭    |   亮    |  XiaoMi/Hair     |
+|   亮    |   亮    |  扩展定义         |
+
+
 # 测试
 ## 串口功能测试
 
@@ -18,3 +44,13 @@
 &emsp;&emsp;使用Mstar调试测试I2C功能，小板和主板均能正常识别。使用ISP工具烧录固件到TV Board，固件完整烧录，主板正常启动。
 
 ![alt text](./Images/Msart_Tool.png)
+
+# 高级功能
+
+&emsp;&emsp;小板模拟了两个串口，一个Vendor串口，一个是ACM串口。ACM串口能帮用户实现更多操作。
+
+![USB_TreeView](./Images/USB_TreeView.png)
+
+&emsp;&emsp;比如用户程序实现了串口电压的设定，只需根据help提示设置即可。设置后，配置会保存在MCU的Flash中。配置文件存储在Bootloader中，更新固件数据也不会消失。
+
+![Config_COM](./Images/Config_COM.png)
