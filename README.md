@@ -54,3 +54,10 @@
 &emsp;&emsp;比如用户程序实现了串口电压的设定，只需根据help提示设置即可。设置后，配置会保存在MCU的Flash中。配置文件存储在Bootloader中，更新固件数据也不会消失。
 
 ![Config_COM](./Images/Config_COM.png)
+
+# 待开发功能
+
+- 串口电平自动识别功能
+- 红外发射功能
+- 小板输出外部使能功能
+- 串口日志保存到TFCard
