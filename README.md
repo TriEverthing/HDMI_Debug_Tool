@@ -45,7 +45,7 @@
 
 ![alt text](./Images/Msart_Tool.png)
 
-# 高级功能
+## 高级功能
 
 &emsp;&emsp;小板模拟了两个串口，一个Vendor串口，一个是ACM串口。ACM串口能帮用户实现更多操作。
 
@@ -55,11 +55,30 @@
 
 ![Config_COM](./Images/Config_COM.png)
 
+## 红外发射
+
+&emsp;&emsp;红外发送支持常用的和红外遥控协议，NEC、SIRC、RC5和RC6。使用下图的命令发送红外指令。测试功能正常，设备正常识别并响应。
+
+![Config_COM](./Images/InfRared.png)
+
+&emsp;&emsp;-a设置设备地址码，-c指定设备命令码，-t指定协议类型，支持协议类型有：
+
+- NEC
+- NEC_EXT
+- NEC_REPEAT
+- SIRC_12BIT
+- SIRC_15BIT
+- SIRC_20BIT
+- RC5
+- RC5X
+- RC5X_20
+- RC6
+
+
 # 待开发功能
 
 &emsp;&emsp;本人软件水平有限，目前只实现了基本功能。目前硬件功能都验证OK，还有几个扩展的软件功能暂未开发。
 
 - 串口电平自动识别功能
-- 红外发射功能
 - 小板输出外部使能功能
 - 串口日志保存到TFCard
